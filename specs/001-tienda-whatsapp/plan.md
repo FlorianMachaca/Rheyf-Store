@@ -93,6 +93,7 @@ index.html
 src/
 ├── main.jsx
 ├── App.jsx
+├── config/              # nombre y número modificable del negocio
 ├── pages/
 │   ├── HomePage.jsx
 │   ├── CatalogPage.jsx

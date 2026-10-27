@@ -195,9 +195,10 @@ administrativa y pública reflejan cada cambio.
   carrito y MUST impedir confirmar si un artículo del carrito dejó de estar disponible.
 - **FR-011**: La confirmación MUST presentar el resumen y el total del pedido y MUST
   permitir volver a la tienda.
-- **FR-012**: La confirmación MUST preparar un enlace a WhatsApp dirigido al número
-  configurado de la tienda y un mensaje editable con productos, cantidades, precios y
-  total.
+- **FR-012**: La confirmación y el carrito MUST ofrecer enlaces click-to-chat a WhatsApp
+  dirigidos al número del negocio. El mensaje editable MUST incluir el nombre Rheyf
+  Store, saludo, productos, cantidades, precios unitarios, subtotales por producto,
+  subtotal general, total en soles y una solicitud para coordinar la entrega.
 - **FR-013**: La tienda MUST dejar claro que el mensaje se envía desde WhatsApp por
   decisión de la persona y MUST no indicar que un pedido fue enviado o pagado antes de
   que la persona realice esas acciones fuera de la tienda.
@@ -238,8 +239,8 @@ administrativa y pública reflejan cada cambio.
   línea y el total mostrado coinciden exactamente con la suma de precio por cantidad,
   en soles.
 - **SC-003**: Para cada escenario de pedido válido, el mensaje abierto en WhatsApp
-  contiene el 100% de los productos y cantidades del carrito, sus precios y el total
-  correspondiente.
+  contiene el nombre de la tienda, saludo, el 100% de los productos y cantidades,
+  precio unitario, subtotales por línea, subtotal general, total y solicitud de entrega.
 - **SC-004**: Los cambios válidos de alta, edición y eliminación de producto se
   reflejan en la vista administrativa y en el catálogo; los datos inválidos no se
   guardan.
@@ -250,8 +251,9 @@ administrativa y pública reflejan cada cambio.
 ## Assumptions
 
 - La tienda opera en un solo mercado: Perú; todas las cantidades de dinero usan soles.
-- El número de WhatsApp de la tienda será proporcionado y configurado antes de
-  implementar el enlace; esta especificación no inventa un número.
+- El número comercial configurado es 930138447. La aplicación lo normaliza al formato
+  internacional peruano 51930138447; se puede modificar en `src/config/store.js` o
+  mediante `VITE_WHATSAPP_PHONE_NUMBER`.
 - Las categorías existentes se ofrecen para selección y filtro; administrar categorías
   no forma parte del alcance.
 - Para que el prototipo no inicie vacío, el catálogo demostrativo comienza con los

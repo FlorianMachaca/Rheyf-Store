@@ -9,6 +9,7 @@ import AdminProductsPage from './pages/AdminProductsPage.jsx';
 import { addToCart, changeQuantity, getCartSummary, removeFromCart } from './features/cart/cart.js';
 import { createProduct, deleteProduct, getCategories, getProducts, updateProduct } from './services/productApi.js';
 import { buildWhatsAppLink } from './services/whatsappLink.js';
+import { STORE_WHATSAPP_PHONE } from './config/store.js';
 
 export default function App() {
   const [page, setPage] = useState('home');
@@ -33,7 +34,7 @@ export default function App() {
 
   const summary = useMemo(() => getCartSummary(cart, products), [cart, products]);
   const selectedProduct = products.find((product) => product.id === selectedProductId);
-  const whatsappUrl = buildWhatsAppLink(import.meta.env.VITE_WHATSAPP_PHONE_NUMBER, summary.lines, summary.totalCents);
+  const whatsappUrl = buildWhatsAppLink(STORE_WHATSAPP_PHONE, summary.lines);
 
   function navigate(nextPage) { setPage(nextPage); setError(''); setNotice(''); window.scrollTo({ top: 0, behavior: 'smooth' }); }
   function openProduct(id) { setSelectedProductId(id); navigate('detail'); }
@@ -51,7 +52,7 @@ export default function App() {
       {loading ? <div className="page-section loading-state">Cargando productos…</div> : page === 'home' ? <HomePage products={products} categories={categories} onNavigate={navigate} onChooseCategory={chooseCategory} onOpenProduct={openProduct} />
         : page === 'catalog' ? <CatalogPage products={products} categories={categories} onOpenProduct={openProduct} onAddToCart={add} initialCategoryId={initialCategoryId} />
           : page === 'detail' ? <ProductDetailPage product={selectedProduct} onBack={() => navigate('catalog')} onAdd={add} />
-            : page === 'cart' ? <CartPage summary={summary} onChange={(id, delta) => setCart((current) => changeQuantity(current, id, delta))} onRemove={(id) => setCart((current) => removeFromCart(current, id))} onNavigate={navigate} />
+            : page === 'cart' ? <CartPage summary={summary} whatsappUrl={whatsappUrl} onChange={(id, delta) => setCart((current) => changeQuantity(current, id, delta))} onRemove={(id) => setCart((current) => removeFromCart(current, id))} onNavigate={navigate} />
               : page === 'confirm' ? <OrderConfirmationPage summary={summary} whatsappUrl={whatsappUrl} onNavigate={navigate} />
                 : page === 'admin' ? <AdminProductsPage products={products} categories={categories} onCreate={(data) => saveProduct(null, data)} onUpdate={saveProduct} onDelete={removeProduct} onRefresh={reloadProducts} />
                   : <HomePage products={products} categories={categories} onNavigate={navigate} onChooseCategory={chooseCategory} onOpenProduct={openProduct} />}

@@ -6,8 +6,8 @@ local Express con SQLite mediante el módulo integrado `node:sqlite`.
 ## Requisitos
 
 - Node.js 24.15 o superior y npm.
-- Número de WhatsApp de la tienda en formato internacional, configurado localmente
-  como `VITE_WHATSAPP_PHONE_NUMBER`.
+- Número de WhatsApp del negocio definido en `src/config/store.js`; acepta el número
+  peruano de 9 dígitos y genera el enlace internacional con prefijo `51`.
 - Acceso de escritura a la carpeta para crear `server/data/rheyf-store.db`.
 
 ## Instalar dependencias
@@ -49,7 +49,7 @@ pruebas de integración verifican lectura y CRUD contra SQLite en memoria.
 2. Buscar y filtrar; abrir un detalle y revisar imagen, disponibilidad, descripción y precio en soles.
 3. Agregar productos, cambiar cantidades, eliminar artículos y contrastar el total.
 4. En administración, crear, editar, marcar no disponible y eliminar productos; verificar validaciones y persistencia tras recargar.
-5. Configurar el teléfono de WhatsApp en `.env`, preparar un pedido y revisar el texto precargado. Editar o enviar queda a decisión de la persona.
+5. Con el número configurado (930138447 por defecto), preparar un pedido y revisar el texto precargado en WhatsApp. Editar o enviar queda a decisión de la persona.
 6. Comparar con la referencia: fondo negro/gris, texto claro, azul eléctrico y verde solo para la acción de WhatsApp.
 
 No hay pagos, autenticación administrativa ni historial de pedidos.

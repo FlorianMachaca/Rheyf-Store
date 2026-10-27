@@ -7,8 +7,9 @@ eléctrico; verde se reserva para WhatsApp.
 ## Requisitos
 
 - Node.js 24.15 o superior y npm.
-- El teléfono internacional de WhatsApp de la tienda, configurado localmente en `.env`
-  como `VITE_WHATSAPP_PHONE_NUMBER` (solo dígitos, por ejemplo `51999888777`).
+- El número de WhatsApp de la tienda está en `src/config/store.js` como `930138447`.
+  Puede sustituirse mediante `VITE_WHATSAPP_PHONE_NUMBER` en `.env`; la aplicación
+  agrega el prefijo peruano `51` al crear el enlace.
 - El servidor crea la base SQLite en `server/data/rheyf-store.db` por defecto.
 
 La aplicación accede a SQLite desde su API local Express usando el módulo integrado
@@ -28,8 +29,8 @@ En otra terminal desde la raíz, inicia Vite:
 npm run dev
 ```
 
-Abre la URL local que muestra Vite. Para crear la configuración local, copia
-`.env.example` a `.env` y configura el teléfono de WhatsApp.
+Abre la URL local que muestra Vite. Para modificar el teléfono, cambia
+`src/config/store.js` o configura `VITE_WHATSAPP_PHONE_NUMBER` en un `.env` local.
 
 ## Pruebas y build
 

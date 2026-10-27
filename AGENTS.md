@@ -33,8 +33,9 @@ En una segunda terminal para abrir la interfaz de desarrollo:
 npm run dev
 ```
 
-Configura `VITE_WHATSAPP_PHONE_NUMBER` en un archivo local `.env`, con prefijo de país
-y solo dígitos (por ejemplo, `51999888777`). El servidor usa SQLite local en
+El número de negocio está en `src/config/store.js` (`930138447`); se puede sustituir
+con `VITE_WHATSAPP_PHONE_NUMBER` en `.env`. La aplicación normaliza números peruanos
+al prefijo internacional `51`. El servidor usa SQLite local en
 `server/data/rheyf-store.db` por defecto; `.env.example` documenta `PORT`,
 `DATABASE_PATH` y el teléfono.
 

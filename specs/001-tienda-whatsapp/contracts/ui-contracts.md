@@ -16,14 +16,19 @@ local de [api.md](./api.md) para los datos de catálogo y productos.
 
 ## Contrato de enlace WhatsApp
 
-- Destino: conversación de WhatsApp con el número oficial de la tienda, configurado
-  antes de implementación en formato internacional de solo dígitos.
-- Mensaje precargado: saludo breve, líneas con nombre de producto, cantidad y precio,
-  total en soles y una solicitud para coordinar disponibilidad y entrega.
+- Destino: `https://wa.me/51930138447` para el número de negocio 930138447. La
+  configuración acepta el número peruano local de 9 dígitos o su forma internacional.
+- Mensaje precargado: nombre de Rheyf Store, saludo, líneas con nombre, cantidad,
+  precio unitario y subtotal por producto, subtotal general y total en soles; termina
+  solicitando coordinar la entrega.
 - Codificación: URL válida y texto UTF-8 codificado para preservar tildes, espacios y
   saltos de línea.
 - Control de envío: WhatsApp muestra el texto en el campo de redacción. La persona
   revisa, puede editar y decide enviarlo; abrir el enlace no confirma el envío.
+- Acciones: tanto “Confirmar pedido” desde el carrito como “Pedir por WhatsApp” desde
+  confirmación abren el mismo enlace en una pestaña o aplicación compatible.
+- Carrito vacío: no se genera enlace ni se permite confirmar; se muestra un aviso para
+  agregar productos.
 - Fallo al abrir: mantener el pedido visible y presentar una indicación sencilla para
   intentar abrir WhatsApp desde un dispositivo compatible. No mostrar éxito de envío.
 - Apariencia: verde solo para la acción de WhatsApp; las demás acciones conservan azul

@@ -31,7 +31,7 @@ servidor local y de pruebas.
 - [X] T002 [P] Crear reglas de exclusión para `node_modules/`, `dist/`, `coverage/`, `.env*` (excepto `.env.example`) y `server/data/*.db` en `.gitignore`.
 - [X] T003 Añadir React, Vite, Express y Vitest a dependencias/scripts; usar `node:sqlite` integrado en Node y registrar versiones en `package.json` y `package-lock.json`.
 - [X] T004 Configurar proxy de desarrollo `/api` al servidor local en `vite.config.js`.
-- [X] T005 Crear `.env.example` con `PORT=3001`, `DATABASE_PATH=server/data/rheyf-store.db` y `VITE_WHATSAPP_PHONE_NUMBER=`; ignorar el archivo `.env` real en `.gitignore`.
+- [X] T005 Crear `.env.example` con `PORT=3001`, `DATABASE_PATH=server/data/rheyf-store.db` y el número de WhatsApp modificable; ignorar el archivo `.env` real en `.gitignore`.
 
 ---
 
@@ -117,13 +117,13 @@ vacío o inválido no se puede confirmar.
 
 ### Pruebas de US3
 
-- [X] T027 [P] [US3] Probar codificación del número internacional, tildes, saltos de línea, productos, cantidades, precios y total en `tests/unit/whatsappLink.test.js`.
+- [X] T027 [P] [US3] Probar normalización 930138447→51930138447 y mensaje con tienda, saludo, cantidad, precio unitario, subtotales, total, entrega y ambos accesos de WhatsApp en `tests/unit/whatsappLink.test.js` y `tests/unit/orderFlow.test.jsx`.
 
 ### Implementación de US3
 
-- [X] T028 [P] [US3] Preparar enlace click-to-chat y mensaje en español con número `VITE_WHATSAPP_PHONE_NUMBER`, URL UTF-8 y resumen editable en `src/services/whatsappLink.js`.
+- [X] T028 [P] [US3] Configurar el número peruano modificable y preparar enlace click-to-chat internacional con mensaje en español UTF-8 en `src/config/store.js` y `src/services/whatsappLink.js`.
 - [X] T029 [US3] Crear pantalla de confirmación con resumen, botón WhatsApp verde y regreso a compra; no indicar envío o pago completado en `src/pages/OrderConfirmationPage.jsx`.
-- [X] T030 [US3] Conectar la confirmación al carrito válido y mostrar recuperación cuando WhatsApp no abra, sin borrar el resumen en `src/App.jsx` y `src/pages/OrderConfirmationPage.jsx`.
+- [X] T030 [US3] Abrir WhatsApp desde “Confirmar pedido” y “Pedir por WhatsApp”, bloquear carrito vacío o inválido y conservar el resumen sin afirmar envío en `src/App.jsx`, `src/pages/CartPage.jsx` y `src/pages/OrderConfirmationPage.jsx`.
 
 **Checkpoint**: la persona controla la apertura, edición y envío desde WhatsApp; la
 tienda nunca envía el mensaje por su cuenta.

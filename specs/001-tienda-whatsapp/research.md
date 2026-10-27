@@ -54,7 +54,8 @@
   compila correctamente. La API local y el servidor Vite respondieron en la
   comprobación de ejecución. No se agregó un framework de pruebas de navegador.
 - **Límite**: los recorridos visuales completos y la apertura real de WhatsApp requieren
-  revisión manual. El teléfono de la tienda aún no está configurado.
+  revisión manual en celular y computadora. El enlace y el mensaje se verifican con
+  pruebas unitarias, sin enviar mensajes.
 - **Referencia**: [Vitest: Getting Started](https://vitest.dev/guide/).
 
 ## Enlace de WhatsApp
@@ -64,11 +65,11 @@
   WhatsApp; Rheyf Store no envía el mensaje ni confirma la compra.
 - **Motivo**: Coincide con el prototipo y con FR-012/FR-013; no requiere API de envío,
   pagos ni una cuenta integrada.
-- **Validación**: Probar escritorio y móvil con el número configurado, tildes, saltos
-  de línea, productos, cantidades, precios y total. Confirmar que WhatsApp abre el
-  chat y deja el mensaje en el campo de composición.
-- **Dependencia**: el número comercial de WhatsApp debe proporcionarse antes de
-  implementar la integración. El valor no está disponible en la especificación.
+- **Validación**: probar la normalización del número 930138447 a 51930138447 y verificar
+  saludo, nombre de tienda, productos, cantidades, precios unitarios, subtotales, total
+  y solicitud de entrega. No enviar mensajes durante las pruebas.
+- **Configuración**: `src/config/store.js` define el valor inicial 930138447; la
+  variable `VITE_WHATSAPP_PHONE_NUMBER` puede reemplazarlo.
 - **Referencia**: [WhatsApp Help Center: How to use click to chat](https://faq.whatsapp.com/5913398998672934).
 
 ## Alcance local comprobado
