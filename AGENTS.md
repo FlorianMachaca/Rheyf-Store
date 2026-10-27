@@ -1,39 +1,52 @@
 # Rheyf Store
 
-## Nombre y objetivo
-Rheyf Store es un prototipo de tienda virtual de productos variados. Permite armar
-pedidos y coordinarlos mediante WhatsApp.
+## Objetivo
+Prototipo de tienda virtual de productos variados para consultar el catálogo,
+armar un pedido y coordinarlo por WhatsApp.
 
 ## Stack
-Usar React con Vite y SQLite, de acuerdo con la guía del laboratorio. Mantener el
-stack mínimo y no añadir tecnologías sin una necesidad definida y aprobada. El
-repositorio aún no contiene archivos de configuración del proyecto.
+Frontend React con Vite; API local con Express y base de datos SQLite mediante el
+módulo integrado `node:sqlite` (Node.js 24.15 o superior). No incorporar tecnologías
+adicionales sin una necesidad aprobada. La guía del laboratorio no está incluida en
+el repositorio; la conexión local actual queda documentada en `specs/001-tienda-whatsapp/plan.md`.
 
-## Diseño
-Respetar el prototipo visual de referencia: fondo negro y gris oscuro, texto blanco,
-azul eléctrico para botones y detalles, y verde para las acciones de WhatsApp.
+## Diseño y alcance
+Respetar el prototipo: fondo negro y gris oscuro, texto claro, azul eléctrico para
+botones/detalles y verde únicamente para acciones de WhatsApp. La interfaz y los
+mensajes están en español de Perú; los precios se muestran en soles (S/).
 
-## Alcance de esta versión
-El producto contempla catálogo, detalle de productos, carrito, confirmación del
-pedido, enlace de WhatsApp y administración demostrativa de productos. No contempla
-pagos en línea ni autenticación administrativa.
+Incluye inicio, catálogo con búsqueda y categorías, detalle, carrito, confirmación,
+enlace de WhatsApp y administración demostrativa para registrar, editar y eliminar
+productos. No incluye pagos en línea ni autenticación administrativa.
 
 ## Ejecución y pruebas
-No se encontraron manifiestos de dependencias, archivos de bloqueo, configuración de
-Vite ni scripts de pruebas. Por eso aún no hay comandos de instalación, inicio o
-pruebas documentados; definirlos cuando el proyecto esté configurado, sin asumir que
-ya existen.
+Desde la raíz del repositorio, con Node.js 24.15+ y npm:
+
+```powershell
+npm install
+npm run server
+```
+
+En una segunda terminal para abrir la interfaz de desarrollo:
+
+```powershell
+npm run dev
+```
+
+Configura `VITE_WHATSAPP_PHONE_NUMBER` en un archivo local `.env`, con prefijo de país
+y solo dígitos (por ejemplo, `51999888777`). El servidor usa SQLite local en
+`server/data/rheyf-store.db` por defecto; `.env.example` documenta `PORT`,
+`DATABASE_PATH` y el teléfono.
+
+```powershell
+npm test
+npm run build
+```
 
 ## Convenciones
-- Mantener el código sencillo, organizado por responsabilidades y sin duplicación
-  innecesaria.
-- Escribir toda la interfaz y los mensajes en español de Perú; mostrar precios en
-  soles (S/).
-- Validar los datos y proteger la información. No incluir secretos ni credenciales
-  en el código.
-- Probar las funcionalidades principales y verificar los criterios de aceptación
-  mediante el comportamiento observable de la aplicación.
-- Implementar solo lo definido y aprobado en la especificación; no adelantar
-  funcionalidades.
+- Mantener el código sencillo, organizado por responsabilidades y con nombres claros.
+- Validar entradas e imágenes; proteger datos y no guardar claves ni secretos en el código.
+- Probar funcionalidades principales y criterios observables en la aplicación.
+- Respetar la especificación aprobada; no añadir funciones fuera de su alcance.
 
 Las reglas de producto viven en .specify/memory/constitution.md y el estado del producto en specs/README.md
